@@ -12,9 +12,9 @@
 
 <body>
 <h1>Amanda's thesis is due in:</h1>
-<div id='timer'>
+<div id='timer'> </div>
+<div id='wordCount'> </div>
 
-</div>
 
 	<!--
 	countdown script taken from:
@@ -49,6 +49,16 @@
 				minutes + 'm ' +
 				seconds + 's ' +
 				milliseconds + 'ms';
+			var wordCountElement = document.getElementById('wordCount');
+			wordCountElement.innerHTML = 'You need to write: <br /><blockquote>' + 
+				(10000/days).toFixed(2) +
+				' words per day OR <br />' + 
+				(10000/(hours+days*24)).toFixed(2) + 
+				' words per hour OR <br />' + 
+				(10000/(hours*60+days*24*60 + minutes)).toFixed(2) + 
+				' words per minute OR <br />' + 
+				(10000/(hours*60*60+days*24*60*60 + minutes*60 + seconds)).toPrecision(2) + 
+				' words per second</blockquote>';
 		}
 
 		timer = setInterval(showRemaining, 10);
